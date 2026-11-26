@@ -1,0 +1,12 @@
+{
+  "name": "n1-setup",
+  "version": "1.0.0",
+  "description": "N1 project setup and package management",
+  "license": "ISC",
+  "author": "Ian Gabriel S. Derilo",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
