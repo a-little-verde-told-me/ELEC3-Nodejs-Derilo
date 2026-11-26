@@ -1,0 +1,13 @@
+{
+  "name": "n2-calculator",
+  "version": "1.0.0",
+  "description": "N2 modular calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ian Gabriel S. Derilo",
+  "license": "ISC",
+  "type": "commonjs"
+}
