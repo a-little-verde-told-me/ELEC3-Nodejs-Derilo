@@ -3,6 +3,8 @@
 // Activity: N2 - Modular Calculator
 // Date: November 27, 2026
 
+const path = require('path');
+
 // import the two modules
 const operations = require('./operations');
 const { formatResult } = require('./formatter');
@@ -19,7 +21,8 @@ function showUsage() {
     console.log('how to run: node index.js <your chosen operations> <numbers you want to enter>');
     console.log('available operations: add, subtract, multiply, divide, average');
     console.log('example: node index.js average 88 92 85');
-    console.log('==================================================================\n');
+    console.log('==================================================================');
+    console.log(`you are currently running ${path.basename(__filename)}\n`);
 }
 
 // we need to find the right operation and return the result
