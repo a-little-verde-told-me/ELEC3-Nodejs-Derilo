@@ -10,7 +10,7 @@ const symbols = {
   divide: '/',
 };
 
-function result(operation, numbers, result) {
+function formatResult(operation, numbers, result) {
   if (operation === 'average') {
     return `average of ${numbers.join(', ')} = ${result}`;
   }
@@ -18,4 +18,4 @@ function result(operation, numbers, result) {
   return `${numbers[0]} ${symbol} ${numbers[1]} = ${result}`;
 }
 
-module.exports = { result };
+module.exports = { formatResult };
