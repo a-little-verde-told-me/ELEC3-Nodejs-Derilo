@@ -22,7 +22,7 @@ function multiply(a, b) {
 // since we cant divide by zero, we will show an error message instead of a wrong answer. index.js will catch and show the error
 function divide(a, b) {
   if (b === 0) {
-    throw new Error('cannot divide by zero.');
+    throw new Error('cannot divide by zero.!!!!!');
   }
   return a / b;
 }
@@ -31,7 +31,7 @@ function divide(a, b) {
 // reduce() adds up all the numbers, then we divide by how many there are.
 function average(numbers) {
   if (numbers.length === 0) {
-    throw new Error('average need at least one number.');
+    throw new Error('average need at least one number.!!!!!');
   }
   const total = numbers.reduce((sum, n) => sum + n, 0);
   return total / numbers.length;
