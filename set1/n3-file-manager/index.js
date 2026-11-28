@@ -38,7 +38,7 @@ function getFilePath(name) {
 function createFile() {
     // when the user did not enter a file name or the content
     if (!fileName || !content) {
-        console.log('\n!!!!! error: please type a file name and the content.!!!!!\n');
+        console.log('\n!!!!! error: please type a file name and the content.!!!!!');
         showUsage();
         return;
     }
@@ -96,6 +96,26 @@ function updateFile() {
     console.log(`\nfile updated: ${filePath}\n`);
 }
 
+function deleteFile() {
+    // when the user did not enter a file name
+    if (!fileName) {
+        console.log('\n!!!!! error: please type the file name to delete.!!!!!');
+        showUsage();
+        return;
+    }
+
+    const filePath = getFilePath(fileName);
+
+    // when the file does not exist
+    if (!fs.existsSync(filePath)) {
+        console.log(`\n!!!!! error: "${fileName}" was not found.!!!!!\n`);
+        return;
+    }
+
+    fs.unlinkSync(filePath); // removes the file
+    console.log(`\nfile deleted: ${filePath}\n`);
+}
+
 function main() {
 
     switch (command) {
@@ -107,6 +127,9 @@ function main() {
             break;
         case 'update':
             updateFile();
+            break;
+        case 'delete':
+            deleteFile();
             break;
         default:
             console.log('\n!!!!! error: please type a valid command.!!!!!\n');
