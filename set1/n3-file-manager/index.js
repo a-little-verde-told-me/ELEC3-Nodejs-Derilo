@@ -55,11 +55,35 @@ function createFile() {
     console.log(`\nfile created: ${filePath}\n`);
 }
 
+function readFile() {
+    // when the user did not enter a file name
+    if (!fileName) {
+        console.log('\n!!!!! error: please type the file name to read.!!!!!');
+        showUsage();
+        return;
+    }
+
+    const filePath = getFilePath(fileName);
+
+    // when the file does not exist
+    if (!fs.existsSync(filePath)) {
+        console.log(`\n!!!!! error: "${fileName}" was not found.!!!!!\n`);
+        return;
+    }
+
+    console.log(`\n----- contents of ${fileName} -----`);
+    console.log(fs.readFileSync(filePath, 'utf8')); // utf8 turns the file into readable text
+    console.log('-----------------------------------\n');
+}
+
 function main() {
 
     switch (command) {
         case 'create':
             createFile();
+            break;
+        case 'read':
+            readFile();
             break;
         default:
             console.log('\n!!!!! error: please type a valid command.!!!!!\n');
