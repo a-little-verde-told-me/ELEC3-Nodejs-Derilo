@@ -19,6 +19,7 @@ const args = process.argv.slice(2);
 const command = args[0]; // first argument of the user like create
 const fileName = args[1]; // second argument is the name of the file like notes.txt
 const content = args.slice(2).join(' '); // the remaining arguments joined into one text
+const validCommands = ['create', 'read', 'update', 'delete', 'list'];
 
 function showUsage() {
     console.log('\n=========================    READ THIS   =======================');
@@ -143,26 +144,41 @@ function listFiles() {
 }
 
 function main() {
+    // when user did not enter something after the filename
+    if (!command) {
+        console.log('\n!!!!! error: please type a command.!!!!!');
+        showUsage();
+        return;
+    }
 
-    switch (command) {
-        case 'create':
-            createFile();
-            break;
-        case 'read':
-            readFile();
-            break;
-        case 'update':
-            updateFile();
-            break;
-        case 'delete':
-            deleteFile();
-            break;
-        case 'list':
-            listFiles();
-            break;
-        default:
-            console.log('\n!!!!! error: please type a valid command.!!!!!\n');
-            showUsage();
+    // when the user entered a command that is not supported
+    if (!validCommands.includes(command)) {
+        console.log(`\n!!!!! error: unknown command "${command}".!!!!!`);
+        showUsage();
+        return;
+    }
+
+    // any other problem with the files will be caught here so the program will not crash
+    try {
+        switch (command) {
+            case 'create':
+                createFile();
+                break;
+            case 'read':
+                readFile();
+                break;
+            case 'update':
+                updateFile();
+                break;
+            case 'delete':
+                deleteFile();
+                break;
+            case 'list':
+                listFiles();
+                break;
+        }
+    } catch (error) {
+        console.log('\n!!!!! error: ' + error.message);
     }
 }
 
