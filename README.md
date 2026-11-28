@@ -1,9 +1,9 @@
 # ELEC 3 – Node.js
 
-**Name:** Ian Gabriel S. Derilo
-**Section:** IV-BSIT-B
-**Course:** ELEC 3 – Node.js
-**Instructor:** Carl Gustaf Patrik B. Ferrer
+- **Name:** Ian Gabriel S. Derilo
+- **Section:** IV-BSIT-B
+- **Course:** ELEC 3 – Node.js
+- **Instructor:** Carl Gustaf Patrik B. Ferrer
 
 ## Activities
 
