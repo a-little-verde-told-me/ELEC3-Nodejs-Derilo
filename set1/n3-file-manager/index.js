@@ -76,6 +76,26 @@ function readFile() {
     console.log('-----------------------------------\n');
 }
 
+function updateFile() {
+    // when the user did not enter a file name or the text to add
+    if (!fileName || !content) {
+        console.log('\n!!!!! error: please type a file name and the text to add.!!!!!');
+        showUsage();
+        return;
+    }
+
+    const filePath = getFilePath(fileName);
+
+    // when the file does not exist
+    if (!fs.existsSync(filePath)) {
+        console.log(`\n!!!!! error: "${fileName}" was not found.!!!!!\n`);
+        return;
+    }
+
+    fs.appendFileSync(filePath, '\n' + content); // adds the text at the end of the file on a new line
+    console.log(`\nfile updated: ${filePath}\n`);
+}
+
 function main() {
 
     switch (command) {
@@ -84,6 +104,9 @@ function main() {
             break;
         case 'read':
             readFile();
+            break;
+        case 'update':
+            updateFile();
             break;
         default:
             console.log('\n!!!!! error: please type a valid command.!!!!!\n');
