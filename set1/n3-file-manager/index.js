@@ -116,6 +116,32 @@ function deleteFile() {
     console.log(`\nfile deleted: ${filePath}\n`);
 }
 
+function listFiles() {
+    const names = fs.readdirSync(filesFolder); // all the names inside the files folder
+    let count = 0;
+
+    names.forEach((name) => {
+        const filePath = path.join(filesFolder, name);
+
+        // this to skip folders and only show the files
+        if (!fs.statSync(filePath).isFile()) {
+            return;
+        }
+
+        count++;
+        console.log(`\nfile ${count}`);
+        console.log(`full path : ${filePath}`);
+        console.log(`file name : ${path.basename(filePath)}`); // the file name with its extension
+        console.log(`extension : ${path.extname(filePath)}`); // the extension like .txt
+        console.log(`contents  : ${fs.readFileSync(filePath, 'utf8')}`);
+    });
+
+    // when there are no files inside the files folder
+    if (count === 0) {
+        console.log('\n!!!!! the files folder is empty.!!!!!');
+    }
+}
+
 function main() {
 
     switch (command) {
@@ -130,6 +156,9 @@ function main() {
             break;
         case 'delete':
             deleteFile();
+            break;
+        case 'list':
+            listFiles();
             break;
         default:
             console.log('\n!!!!! error: please type a valid command.!!!!!\n');
